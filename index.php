@@ -18,6 +18,7 @@
     <?php } else {
         echo 'Utente non loggato esegui Login!!';
     } ?>
+    <a href="./logout.php">Logout</a>
 
 </body>
 

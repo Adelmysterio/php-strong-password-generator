@@ -15,11 +15,11 @@ foreach ($users as $user) {
         break;
     }
 }
-var_dump($isLogged);
 if ($isLogged) {
     header('Location: ./index.php');
     exit;
 }
+var_dump("$username $password");
 ?>
 
 <!DOCTYPE html>
