@@ -1,6 +1,5 @@
 <?php session_start();
-include __DIR__ . '/login.php';
-var_dump($isLogged)
+
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +13,7 @@ var_dump($isLogged)
 
 <body>
     <a href="./login.php">Login</a>
-    <?php if ($isLogged) { ?>
+    <?php if (isset($_SESSION['username'])) { ?>
         <h2>Benvenuto <?php echo $_SESSION['username'] ?></h2>
     <?php } else {
         echo 'Utente non loggato esegui Login!!';

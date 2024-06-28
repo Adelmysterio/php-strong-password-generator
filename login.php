@@ -10,17 +10,12 @@ $isLogged = false;
 
 foreach ($users as $user) {
     if ($user['username'] == $username && $user['password'] == $password) {
-        $_SESSION['username'] = $username;
-        $_SESSION['password'] = $password;
+        $_SESSION['username'] = $_GET['username'];
         $isLogged = true;
         break;
-    } else {
-        $_SESSION['username'] = '';
-        $_SESSION['password'] = '';
-        $isLogged = false;
     }
 }
-
+var_dump($isLogged);
 if ($isLogged) {
     header('Location: ./index.php');
     exit;
