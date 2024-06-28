@@ -11,16 +11,18 @@ $isLogged = false;
 foreach ($users as $user) {
     if ($user['username'] == $username && $user['password'] == $password) {
         $_SESSION['username'] = $username;
+        $_SESSION['password'] = $password;
         $isLogged = true;
         break;
+    } else {
+        $_SESSION['username'] = '';
+        $_SESSION['password'] = '';
+        $isLogged = false;
     }
 }
 
 if ($isLogged) {
     header('Location: ./index.php');
-    exit;
-} else {
-    header('Location: ./login.php');
     exit;
 }
 ?>
@@ -34,14 +36,17 @@ if ($isLogged) {
     <title>Login Page</title>
 </head>
 
-<body>
-    <main>
-        <form action="./login.php" method="get">
-            <input type="text" name="username" id="username" required>
-            <input type="password" name="password" id="password" required>
-            <button type="submit">Login</button>
-        </form>
-    </main>
-</body>
+<?php if ($isLogged == false) { ?>
+
+    <body>
+        <main>
+            <form action="./login.php" method="get">
+                <input type="text" name="username" id="username" required>
+                <input type="password" name="password" id="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </main>
+    </body>
+<?php } ?>
 
 </html>
